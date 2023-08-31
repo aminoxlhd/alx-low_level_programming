@@ -9,7 +9,7 @@
 unsigned int binary_to_uint(const char *b)
 {
 	int i = 0;
-	unsigned int returnValue = 0;
+	unsigned int Value = 0;
 
 	while (b[i] != '\0')
 	{
@@ -18,9 +18,9 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		}
 
-	returnValue =  returnValue << 1;
-	returnValue = returnValue + b[i] - '0';
+	Value =  Value << 1;
+	Value = Value + b[i] - '0';
 	i++;
 	}
-	return (returnValue);
+	return (Value);
 }
