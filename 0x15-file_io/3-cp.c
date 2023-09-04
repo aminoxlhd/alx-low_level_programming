@@ -42,6 +42,7 @@ int copy_files_content(const char *file_from, char *file_to)
 		return (99);
 	}
 
+	file_from_file = open(file_from, O_RDONLY);
 	permission = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 	file_to_file = open(file_to, O_WRONLY | O_APPEND | O_CREAT, permission);
 
