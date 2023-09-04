@@ -8,12 +8,19 @@
 #include <unistd.h>
 
 /**
- * Usage: cp file_from file_to
- * @argc: number of arguments
+ * copy_files_content - copy files content
  * Return: void
+ * @file_from: file descriptor of file_from, or -1
+ * @file_to: file descriptor of file_to, or -1
  */
 int copy_files_content(const char *file_from, char *file_to);
 
+/**
+ * main - opies the content of a file to anotkher file
+ * @ac: number of arguments
+ * @av: array of pointers
+ * Return: always 0
+ */
 int main(int ac, char **av)
 {
 	int res;
@@ -28,6 +35,12 @@ int main(int ac, char **av)
 	exit(res);
 }
 
+/**
+ * copy_files_content - checker
+ * @file_from: file descriptor of file_from, or -1
+ * @file_to: file descriptor of file_to, or -1
+ * Return: void
+ */
 int copy_files_content(const char *file_from, char *file_to)
 {
 	char *content = malloc(1024);
