@@ -57,14 +57,14 @@ void display_elf(const char *elf_filename)
 	for (int i = 0; i < EI_NIDENT; i++)
 	{
 		printf("%02x", content->e_ident[i]);
-		if (i == EI_NIDENT -1)
+		if (i == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
 	}
 
 	printf(" Class: ");
-	
+
 	switch (content->e_ident[EI_CLASS])
 	{
 		case ELFCLASSNONE:
@@ -77,7 +77,7 @@ void display_elf(const char *elf_filename)
 			printf("ELF64\n");
 			break;
 		default:
-			printf("<unknown: %x>\n": content->e_ident[EI_CLASS]);
+			printf("<unknown: %x>\n" : content->e_ident[EI_CLASS]);
 	}
 
 	printf(" Data: ");
@@ -188,7 +188,7 @@ void display_elf(const char *elf_filename)
 
 close_file_return = close(file);
 
-if(close_file_return == -1)
+if (close_file_return == -1)
 {
 	printf("Can't clode fd %s", elf_filename);
 	return;
