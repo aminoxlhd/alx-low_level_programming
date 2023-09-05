@@ -26,6 +26,7 @@ void display_elf(const char *elf_filename)
 	Elf64_Ehdr *content;
 	ssize_t file, readContent;
 	int close_file_return;
+	int i;
 
 	if (elf_filename == NULL)
 	{
@@ -54,7 +55,7 @@ void display_elf(const char *elf_filename)
 
 	printf(" Magic: ");
 
-	for (int i = 0; i < EI_NIDENT; i++)
+	for (i = 0; i < EI_NIDENT; i++)
 	{
 		printf("%02x", content->e_ident[i]);
 		if (i == EI_NIDENT - 1)
@@ -77,7 +78,7 @@ void display_elf(const char *elf_filename)
 			printf("ELF64\n");
 			break;
 		default:
-			printf("<unknown: %x>\n" : content->e_ident[EI_CLASS]);
+			printf("<unknown: %x>\n" , content->e_ident[EI_CLASS]);
 	}
 
 	printf(" Data: ");
