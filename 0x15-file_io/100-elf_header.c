@@ -10,6 +10,12 @@
 
 void display_elf(const char *elf_filename);
 
+/**
+ * main - display elf
+ * @ac: pointer
+ * @av: pointer to array
+ * Return: aways 0
+ */
 int main(int ac, char **av)
 {
 	if (ac != 2)
@@ -21,6 +27,10 @@ int main(int ac, char **av)
 	return (0);
 }
 
+/**
+ * display_elf - pointer the magic
+ * @elf_filename: pointer
+ */
 void display_elf(const char *elf_filename)
 {
 	Elf64_Ehdr *content;
@@ -78,7 +88,7 @@ void display_elf(const char *elf_filename)
 			printf("ELF64\n");
 			break;
 		default:
-			printf("<unknown: %x>\n" , content->e_ident[EI_CLASS]);
+			printf("<unknown: %x>\n", content->e_ident[EI_CLASS]);
 	}
 
 	printf(" Data: ");
@@ -192,6 +202,5 @@ close_file_return = close(file);
 if (close_file_return == -1)
 {
 	printf("Can't clode fd %s", elf_filename);
-	return;
 }
 }
