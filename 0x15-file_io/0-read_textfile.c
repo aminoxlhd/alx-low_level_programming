@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "main."
+#include "main.h"
 
 /**
  * read_textfile  - reads a text file and prints it to the POSIX
@@ -22,7 +22,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	return (0);
 }
 
-	buff = malloc(sizeof(char) * max_chars);
+	buff = malloc(sizeof(char) *letters);
 
 	if (buff == NULL)
 {
@@ -30,7 +30,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	return (0);
 }
 
-	b_read = read(f_descriptor, buff, max_chars);
+	b_read = read(f_descriptor, buff, letters);
 
 	b_written = write(STDOUT_FILENO, buff, b_read);
 
