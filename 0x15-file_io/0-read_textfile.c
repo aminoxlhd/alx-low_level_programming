@@ -12,24 +12,29 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	char *content = malloc(letters);
-	ssize_t file, readContent, wroteContent;
+	char *buff;
+	ssize_t f_descriptor, b_read, b_written;
 
-	if (filename == NULL)
+	f_descriptor = open(filename, O_RDONLY);
+
+	if (f_descriptor == -1)
 {
 	return (0);
 }
 
-	file = open(filename, O_RDONLY);
+	buff = malloc(sizeof(char) * max_chars);
 
-	if (file == -1)
+	if (buff == NULL)
 {
-	return (-1);
+	close(f_descriptor);
+	return (0);
 }
 
-	readContent = read(file, content, letters);
+	b_read = read(f_descriptor, buff, max_chars);
 
-	wroteContent = write(STDOUT_FILENO, content, readContent);
+	b_written = write(STDOUT_FILENO, buff, b_read);
 
-	return (wroteContent);
+	free(buff);
+	close(f_descriptor);
+	return (b_written);
 	}
