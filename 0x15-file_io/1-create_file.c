@@ -13,25 +13,25 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int f_description, w_result, lenght = 0;
+	ssize_t file, wroteContent;
 
 	if (filename == NULL)
-		return (-1);
-
-	if (text_content != NULL)
 	{
-	for (lenght = 0; text_content[lenght])
-		{
-			lenght++;
-		}
+		return (-1);
 	}
 
-	f_description = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
-	w_result = write(f_description, text_content, lenght);
+	file = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 
-	if (f_description == -1 || w_result == -1)
+	if (file == -1)
+	{
 		return (-1);
-	close(f_description);
+	}
 
+	wroteContent = write(file, text_content, strlen(text_content));
+
+	if (wroteContent == -1)
+	{
+		return (-1);
+	}
 	return (1);
 }
